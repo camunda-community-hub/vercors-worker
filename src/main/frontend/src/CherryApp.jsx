@@ -29,6 +29,7 @@ const FRAME_NAME = {
   CONTENT: "Content",
   PARAMETERS: "Parameters",
   STORE: "Store",
+  TENANTs: "Tenants",
   OPERATIONLOG: "OperationLog"
 
 }
@@ -76,6 +77,10 @@ class CherryApp extends React.Component {
               }}>Store</Nav.Link>
 
               <Nav.Link onClick={() => {
+                this.clickMenu(FRAME_NAME.TENANTS)
+              }}>Tenants</Nav.Link>
+
+              <Nav.Link onClick={() => {
                 this.clickMenu(FRAME_NAME.OPERATIONLOG)
               }}>Log</Nav.Link>
 
@@ -91,6 +96,7 @@ class CherryApp extends React.Component {
         {this.state.frameContent === FRAME_NAME.SECRET && <Secrets/>}
         {this.state.frameContent === FRAME_NAME.CONTENT && <Content/>}
         {this.state.frameContent === FRAME_NAME.STORE && <Store/>}
+        {this.state.frameContent === FRAME_NAME.TENANTS && <Tenants/>}
         {this.state.frameContent === FRAME_NAME.OPERATIONLOG && <OperationLog/>}
         {this.state.frameContent === FRAME_NAME.PARAMETERS && <Parameters/>}
 

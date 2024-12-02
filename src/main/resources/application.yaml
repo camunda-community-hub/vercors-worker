@@ -4,6 +4,7 @@ cherry:
     classloaderpath: ./localstorage/classloader
     forcerefresh: true
 
+
   runners:
     # the runtime load all embedded runners
     embeddedrunner: true
@@ -12,10 +13,17 @@ cherry:
     pingrunner: false
 
 
+  tenants:
+    # Enable the tenants functionality "autoDectection" implie to connect to Operate
+    automaticDetection: true
+    refreshTenantsInMinutes: 1
+    tenants-ids:
+
+
 # Visit https://github.com/camunda-community-hub/spring-zeebe/?tab=readme-ov-file#connect-to-zeebe
 
 # -------------------- Self Manage
-camunda:
+camundaSimple:
   client:
     mode: simple
     zeebe:
@@ -31,24 +39,43 @@ camunda:
       enabled: false
 
 # -------------------- Self Manage Identity
-camundaIdentity:
+camunda:
   client:
-    mode: oidc
+    mode: selfmanaged
     auth:
       clientId: zeebe
-      clientSecret: 6DOXVAFyoC
+      clientSecret: AnDBsKoVjI
 
     zeebe:
       enabled: true
       gatewayUrl: http://localhost:26500
       preferRestOverGrpc: false
       audience: zeebe-api
-
-    operate:
-      enabled: false
-    tasklist:
-      enabled: false
-
+operate3:
+  client:
+    profile: simple
+    enabled: true
+    base-url: http://localhost:8081
+    session-timeout: PT10M
+    username: demo
+    password: demo
+operate:
+  client:
+    profile: oidc
+    enabled: true
+    base-url: http://localhost:8081
+    auth-url: http://localhost:18080/auth/realms/camunda-platform/protocol/openid-connect/token
+    audience: operate-api
+    client-id: operate
+    client-secret: FK05vxEU8D
+operate2:
+  client:
+    profile: oidc
+    client-id: operate
+    client-secret: FK05vxEU8D
+    scope: # optional
+    auth-url: http://localhost:18080/auth/realms/camunda-platform/protocol/openid-connect/token
+    audience: operate-api
 
 # -------------------- SAAS
 camundaSaas:
@@ -88,14 +115,14 @@ org.hibernate.dialect: "H2Dialect"
 
 
 # --------------------- Postgres
-springPostgresexample.datasource:
+postgres.spring.datasource:
   url: "jdbc:postgresql://localhost/cherrydb"
   username: "camunda"
   password: "camunda"
   driverClassName: "org.postgresql.Driver"
-spring2.jpa.database-platform: "org.hibernate.dialect.PostgreSQL94Dialect"
+postgres.spring.jpa.database-platform: "org.hibernate.dialect.PostgreSQL94Dialect"
 
-orgPostgres.hibernate.dialect: "PostgreSQL94Dialect"
+postgres.org.hibernate.dialect: "PostgreSQL94Dialect"
 
 
 

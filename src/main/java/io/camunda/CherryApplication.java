@@ -9,6 +9,7 @@ package io.camunda;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * This Application is moved to io.camunda in order to detect all io.camunda.connector and
@@ -16,6 +17,7 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
  */
 @SpringBootApplication
 @ConfigurationPropertiesScan("io.camunda")
+@EnableScheduling
 public class CherryApplication {
 
   public static void main(String[] args) {
