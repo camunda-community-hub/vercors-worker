@@ -33,6 +33,7 @@ public class ZeebeContainer {
   @Autowired
   LogOperation logOperation;
 
+
   /**
    * Connection correct is zeebeClient !=null && isConnected = true
    */
@@ -79,6 +80,11 @@ public class ZeebeContainer {
     localZeebe.close();
   }
 
+
+  public void restart() {
+    stopZeebeClient();
+    startZeebeClient();
+  }
   /**
    * Check if the Zeebe Server is alive
    *

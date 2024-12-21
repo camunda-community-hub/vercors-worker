@@ -51,7 +51,7 @@ public class LogOperation {
    * @param message   message to log
    */
   public void log(OperationEntity.Operation operation, AbstractRunner runner, String message) {
-    logger.info("Operation {} on Runner[{}] message[{}]", operation.toString(), runner.getName(), message);
+    logger.info("Operation {} on Runner[{}] message: {}", operation, runner.getName(), message);
     OperationEntity operationEntity = new OperationEntity();
     operationEntity.operation = operation;
     operationEntity.executionTime = LocalDateTime.ofInstant(Instant.now(), ZoneOffset.UTC);
@@ -108,7 +108,7 @@ public class LogOperation {
    * @param e       exception
    */
   public void logError(String message, Exception e) {
-    logger.error("Error message[{}] : {}", message, e);
+    logger.error("Error message[{}] : {}", message, e.getMessage());
     OperationEntity operationEntity = new OperationEntity();
     operationEntity.executionTime = LocalDateTime.ofInstant(Instant.now(), ZoneOffset.UTC);
     operationEntity.operation = OperationEntity.Operation.ERROR;

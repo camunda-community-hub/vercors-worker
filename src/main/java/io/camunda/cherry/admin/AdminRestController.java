@@ -77,8 +77,8 @@ public class AdminRestController {
       parameters.put("cloudClientID", camundaClientProperties.getAuth().getClientId());
       parameters.put("cloudClientSecret", clientSecret); // never send the client Secret
       break;
-    case oidc:
-      parameters.put("gatewayAddress", camundaClientProperties.getZeebe().getGatewayUrl());
+    case selfManaged:
+      parameters.put("gatewayAddress", camundaClientProperties.getZeebe().getGrpcAddress().toString());
       parameters.put("clientId", camundaClientProperties.getAuth().getClientId());
       parameters.put("clientSecret", clientSecret);
       parameters.put("AutorizationServerUrl", camundaClientProperties.getAuth().getIssuer());
@@ -88,9 +88,6 @@ public class AdminRestController {
           "" :
           String.join(";", camundaClientProperties.getTenantIds()));
 
-      break;
-    case simple:
-      parameters.put("gatewayAddress", camundaClientProperties.getZeebe().getGatewayUrl());
       break;
 
     }

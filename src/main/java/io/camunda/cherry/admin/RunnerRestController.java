@@ -417,6 +417,9 @@ public class RunnerRestController {
         for (Map.Entry<String, String> template : mapContent.entrySet()) {
           String fileName = template.getKey() + ".json";
           fileName = fileName.replaceAll("([A-Z])", "-$1").toLowerCase();
+          // remove the first - if it start with
+          if (fileName.startsWith("-"))
+            fileName=fileName.substring(1);
           zipOperation.addZipContent(fileName, template.getValue());
         }
         zipOperation.close();
