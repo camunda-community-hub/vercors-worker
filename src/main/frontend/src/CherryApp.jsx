@@ -18,6 +18,7 @@ import Parameters from "./parameter/Parameters"
 import Secrets from "./secrets/Secrets"
 import Content from "./content/Content"
 import Store from "./store/Store"
+import Tenants from "./tenants/Tenants"
 import OperationLog from "./operationlog/OperationLog"
 import HeaderMessage from "./HeaderMessage/HeaderMessage";
 

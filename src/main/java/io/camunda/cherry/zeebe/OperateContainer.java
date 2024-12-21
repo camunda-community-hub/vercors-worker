@@ -1,6 +1,5 @@
 package io.camunda.cherry.zeebe;
 
-import io.camunda.cherry.exception.TechnicalException;
 import io.camunda.operate.CamundaOperateClient;
 import io.camunda.operate.CamundaOperateClientConfiguration;
 import io.camunda.operate.model.ProcessDefinition;
@@ -12,9 +11,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * Visit https://github.com/camunda-community-hub/camunda-operate-client-java
+ */
 @Component
 public class OperateContainer {
     Logger logger = LoggerFactory.getLogger(OperateContainer.class.getName());
@@ -42,7 +45,8 @@ public class OperateContainer {
         } catch (Exception e) {
             logger.error("Can't get listTenantsId from OperateConfiguration [{}] : {}",
                     operateConfiguration!=null? operateConfiguration.toString(): "",e.getMessage());
-            throw new TechnicalException(e);
+            // don't return an error, maybe operate is not accessible, so return an empty list
+            return Collections.emptySet();
         }
     }
 
