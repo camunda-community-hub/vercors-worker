@@ -67,6 +67,7 @@
             <version>${version.zeebe}</version>
         </dependency>
 
+        <!-- https://github.com/camunda-community-hub/camunda-operate-client-java -->
         <dependency>
             <groupId>io.camunda.spring</groupId>
             <artifactId>spring-boot-starter-camunda-operate</artifactId>
