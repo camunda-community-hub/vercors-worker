@@ -53,7 +53,6 @@ class Tenants extends React.Component {
                     <div className="row" style={{width: "100%"}}>
                         <div className="col-md-12">
                             Tenants
-
                         </div>
                     </div>
                 </div>
